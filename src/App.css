@@ -1,10 +1,10 @@
 .App{
     display: flex;
     flex-direction: column;
-    padding: 0 1em 1em 1em;
+    
     background-attachment: fixed;
-    background-image: url(../src/assets/bg.jpg);
-    background-repeat: no-repeat;
+  background-image: url(../src/assets/bg.svg);
+    background-repeat:no-repeat;
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -15,6 +15,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1em;
+    padding: 1em;
 }
 .header__title{
     padding: 10px;
@@ -41,6 +42,7 @@
     justify-content: center;
     flex-wrap: wrap;
     background: inherit;
+    padding: 1em;   
 }
 
 .modal{
