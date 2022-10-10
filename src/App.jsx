@@ -4,6 +4,7 @@ import './App.css'
 import FormUsers from './components/FormUsers'
 import UserCard from './components/UserCard'
 import { AiOutlineUserAdd } from "react-icons/ai";
+import ModalDelete from './components/ModalDelete'
 const baseURL = 'https://users-crud1.herokuapp.com'
 
 
@@ -12,6 +13,7 @@ function App() {
   const [users, setUsers] = useState()
   const [updateUser, setUpdateUser] = useState()
   const [modal, setModal] = useState(false)
+  const [modalDelete, setModalDelete] = useState(false)
 
   useEffect(() => {
     getAllUsers()
@@ -35,6 +37,7 @@ const createNewUser = data => {
 }
 
 const deleteUserById = id => {
+  handleModalDelete()
   const URL = `${baseURL}/users/${id}/`
   axios.delete(URL)
   .then(res => {
@@ -59,6 +62,11 @@ const updateUserById = (id,data) => {
     console.log(modal);
 
   }
+  const handleModalDelete = () => {
+    setModalDelete(!modalDelete)
+    console.log(modal);
+
+  }
 
   return (
     <div className="App">
@@ -67,7 +75,7 @@ const updateUserById = (id,data) => {
       <div className='header__btn' onClick={handleModal}><AiOutlineUserAdd/></div>  
     </header>
       <section className={`modal ${modal ? 'modal--show' : 'modal--hide'}`}>
-     <div className="modal__container">
+        <div className="modal__container">
           <FormUsers 
           createNewUser = {createNewUser}
           updateUser = {updateUser}
@@ -75,6 +83,13 @@ const updateUserById = (id,data) => {
           updateUserById = {updateUserById}
           handleModal = {handleModal}
           />
+        </div>
+      </section>
+      <section className={`modal ${modalDelete ? 'modal--show' : 'modal--hide'}`}>
+        <div className="modal__container">
+            <ModalDelete
+              handleModalDelete = {handleModalDelete}
+            />
         </div>
       </section>
      
@@ -87,6 +102,7 @@ const updateUserById = (id,data) => {
             deleteUserById = {deleteUserById}
             handleModal = {handleModal}
             setUpdateUser = {setUpdateUser}
+            handleModalDelete = {handleModalDelete}
           />
         ))
       }      

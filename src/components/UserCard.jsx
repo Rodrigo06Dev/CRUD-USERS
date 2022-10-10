@@ -6,7 +6,7 @@ import { BsTrash, BsPencilSquare } from "react-icons/bs";
 const UserCard = ({user, deleteUserById, setUpdateUser, handleModal}) => {
 
 const handleUpdate = () =>{
-        setUpdateUser(user)
+    setUpdateUser(user)
     handleModal()
 }
     

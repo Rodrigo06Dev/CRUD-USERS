@@ -29,8 +29,6 @@
 .header__btn:hover{
     transform: scale(1.1);}
 
-
-
 .users-container{
     display: flex;
     gap: 20px;
